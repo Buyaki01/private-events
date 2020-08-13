@@ -1,17 +1,10 @@
-<%= form_with(model: session, local: true) do |form| %>
-  <% if session.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>
-
-      <ul>
-      <% session.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+<%= form_with(local: true) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, class: 'mb-1 form-control' %>
+  <br/>
+  <br/>
+  <br/>
+  <div>
+    <input type="submit" name="commit" value="Sign In ">
   </div>
 <% end %>

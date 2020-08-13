@@ -1,55 +1,27 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :edit, :update, :destroy]
+  # before_action :set_session, only: [:show, :edit, :update, :destroy]
 
-  # GET /sessions
-  # GET /sessions.json
-  def index
-    @sessions = Session.all
-  end
-
-  # GET /sessions/1
-  # GET /sessions/1.json
-  def show
-  end
-
-  # GET /sessions/new
   def new
-    @session = Session.new
+
   end
 
-  # GET /sessions/1/edit
-  def edit
-  end
-
-  # POST /sessions
-  # POST /sessions.json
   def create
-    @session = Session.new(session_params)
+    @user = User.find_by(name: params[:name])
+    session[:current_user_id] = @user.id
 
     respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
+      if @user
+
+        format.html { redirect_to user_path(@user), notice: 'You have successfully logged in'}
+        format.json { render @user, status: :'logged in' }
       else
         format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
+        format.json { render json: {error: "failed login"}, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /sessions/1
-  # PATCH/PUT /sessions/1.json
-  def update
-    respond_to do |format|
-      if @session.update(session_params)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session }
-      else
-        format.html { render :edit }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+ 
 
   # DELETE /sessions/1
   # DELETE /sessions/1.json
@@ -62,11 +34,7 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_session
-      @session = Session.find(params[:id])
-    end
-
+  
     # Only allow a list of trusted parameters through.
     def session_params
       params.fetch(:session, {})
