@@ -7,11 +7,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:name])
-    session[:current_user_id] = @user.id
+    session[:current_user_id] = @user.id if @user
 
     respond_to do |format|
-      if @user
-
+      if @user 
         format.html { redirect_to user_path(@user), notice: 'You have successfully logged in'}
         format.json { render @user, status: :'logged in' }
       else
@@ -26,9 +25,9 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @session.destroy
+    session[:current_user_id] = nil
     respond_to do |format|
-      format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
+      format.html { redirect_to sign_in_url, notice: 'You have successfully logged out.' }
       format.json { head :no_content }
     end
   end

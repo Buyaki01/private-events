@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   get 'sign_in'  => 'sessions#new'
-  get 'sign_out' => 'sessions#destroy'
+  delete 'sign_out' => 'sessions#destroy'
   post '/sign_in' => 'sessions#create'
 end
