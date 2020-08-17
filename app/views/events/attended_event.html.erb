@@ -1,0 +1,17 @@
+<div>
+<h5>Add Attended Event</h5><br/>
+<%= form_with model: @event do |f| %>
+
+ <% @events.each do |event| %> 
+  <%= check_box_tag "event_ids[]", event.id, false %> 
+  <%= event.description %> <%= event.date %><br/>
+<% end %>
+<br/>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+</div>
