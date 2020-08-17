@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= link_to "Sign Out", sign_out_path, method: :delete, class: "btn" %> 
+  <p id="notice"><%= notice %></p>
+    <% if current_user %>
+    <%= current_user.name%>
+    <%= link_to "Sign Out", sign_out_path, method: :delete, class: "btn" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

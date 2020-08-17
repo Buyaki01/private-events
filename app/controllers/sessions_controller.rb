@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  # before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   def new
 
@@ -19,8 +18,6 @@ class SessionsController < ApplicationController
       end
     end
   end
-
- 
 
   # DELETE /sessions/1
   # DELETE /sessions/1.json
