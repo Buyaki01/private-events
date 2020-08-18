@@ -3,3 +3,22 @@
   <%= @user.name %>
 </p>
 
+<p>
+  <strong>Upcoming Events:</strong>
+  <% @upcoming_events.each do |event| %>
+    <li>
+    <%= link_to event.description, event_path(event) %>
+    </li>
+    <% end %> 
+</p>
+
+
+<p>
+  <strong>Previous Events:</strong>
+  <% @prev_events.each do |event| %>
+    <li>
+    <%= link_to event.description, event_path(event) %>
+    </li>
+    <% end %> 
+</p>
+
