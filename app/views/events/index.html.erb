@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @events.each do |event| %>
+      <% events.each do |event| %>
         <tr>
           <td><%= event.description %></td>
           <td><%= event.date %></td>
@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @upcoming_events.each do |event| %>
+      <% upcoming_events.each do |event| %>
         <tr>
           <td><%= event.description %></td>
           <td><%= event.date %></td>
@@ -49,7 +49,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @previous_events.each do |event| %>
+      <% previous_events.each do |event| %>
         <tr>
           <td><%= event.description %></td>
           <td><%= event.date %></td>

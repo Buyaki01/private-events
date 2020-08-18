@@ -1,19 +1,19 @@
 <div>
   <p>
     <strong>Description:</strong>
-    <%= @event.description %>
+    <%= description %>
   </p>
   <p>
     <strong>Date:</strong>
-    <%= @event.date %>
+    <%= date %>
   </p>
   <p>
     <strong>Creator:</strong>
-    <%= @creator.name %>
+    <%= creator %>
   </p>
   <p>
     <strong>Attendees:</strong><br/>
-    <% @event.attendees.each do |attendee| %>
+    <% attendees.each do |attendee| %>
       <li>
         <%= attendee.name %>
       </li>
