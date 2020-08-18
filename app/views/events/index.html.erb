@@ -11,8 +11,8 @@
     <tbody>
       <% events.each do |event| %>
         <tr>
-          <td><%= event.description %></td>
-          <td><%= event.date %></td>
+          <td><%= event_description(event) %></td>
+          <td><%= event_date(event) %></td>
           <td><%= link_to 'Show', event %></td>
         </tr>
       <% end %>
@@ -31,8 +31,8 @@
     <tbody>
       <% upcoming_events.each do |event| %>
         <tr>
-          <td><%= event.description %></td>
-          <td><%= event.date %></td>
+          <td><%= event_description(event) %></td>
+          <td><%= event_date(event) %></td>
           <td><%= link_to 'Show', event %></td>
         </tr>
       <% end %>
@@ -51,8 +51,8 @@
     <tbody>
       <% previous_events.each do |event| %>
         <tr>
-          <td><%= event.description %></td>
-          <td><%= event.date %></td>
+          <td><%= event_description(event) %></td>
+          <td><%= event_date(event) %></td>
           <td><%= link_to 'Show', event %></td>
         </tr>
       <% end %>

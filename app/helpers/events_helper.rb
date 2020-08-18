@@ -31,4 +31,16 @@ module EventsHelper
         @creator.name
     end
 
+    def name(attendee)
+        attendee.name
+    end
+
+    def event_description(event)
+        event.description
+    end
+
+    def event_date(event)
+        event.date
+    end
+
 end

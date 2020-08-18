@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get 'sign_in'  => 'sessions#new'
   delete 'sign_out' => 'sessions#destroy'
   post 'sign_in' => 'sessions#create'
-  get '/events_attended', to: 'events#attended_event'
-  post '/events_attended', to: 'events#add_attended_event'
+  get 'events_attended', to: 'events#attended_event'
+  post 'events_attended', to: 'events#add_attended_event'
 end

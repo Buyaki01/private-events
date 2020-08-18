@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show]
   before_action :set_current_user, only: [:show]
 
   # GET /users
@@ -73,6 +73,7 @@ class UsersController < ApplicationController
       redirect_to sign_in_path unless current_user
       @current_user = current_user
     end
+
 
     # Only allow a list of trusted parameters through.
     def user_params

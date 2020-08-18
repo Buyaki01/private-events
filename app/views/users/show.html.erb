@@ -1,21 +1,21 @@
 <div>
   <p>
     <strong>Name:</strong>
-    <%= user.name %>
+    <%= name(user) %>
   </p>
   <p>
     <strong>Events Created:</strong>
-    <% user.events_created.each do |event| %>
+    <% events_created.each do |event| %>
       <li>
-        <%= link_to event.description, event_path(event) %>
+        <%= link_to event_description(event), event_path(event) %>
       </li>
     <% end %>
   </p>
   <p>
     <strong>Events Attended:</strong><br/>
-    <% user.attended_events.each do |event| %>
+    <% attended_events.each do |event| %>
       <li>
-        <%= link_to event.description, event_path(event) %>
+        <%= link_to event_description(event), event_path(event) %>
       </li>
     <% end %>
   </p>
@@ -23,7 +23,7 @@
     <strong>Upcoming Events Attended:</strong><br/>
     <% upcoming_events.each do |event| %>
       <li>
-        <%= link_to event.description, event_path(event) %>
+        <%= link_to event_description(event), event_path(event) %>
       </li>
     <% end %>
   </p>
@@ -31,7 +31,7 @@
     <strong>Previous Events Attended:</strong><br/>
     <% prev_events.each do |event| %>
       <li>
-        <%= link_to event.description, event_path(event) %>
+        <%= link_to event_description(event), event_path(event) %>
       </li>
     <% end %>
   </p>
