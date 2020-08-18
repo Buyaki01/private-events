@@ -1,24 +1,38 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Upcoming Events:</strong>
-  <% @upcoming_events.each do |event| %>
-    <li>
-    <%= link_to event.description, event_path(event) %>
-    </li>
-    <% end %> 
-</p>
-
-
-<p>
-  <strong>Previous Events:</strong>
-  <% @prev_events.each do |event| %>
-    <li>
-    <%= link_to event.description, event_path(event) %>
-    </li>
-    <% end %> 
-</p>
-
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+    <strong>Events Created:</strong>
+    <% @user.events_created.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
+  </p>
+  <p>
+    <strong>Events Attended:</strong><br/>
+    <% @user.attended_events.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
+  </p>
+  <p>
+    <strong>Upcoming Events Attended:</strong><br/>
+    <% @upcoming_events.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
+  </p>
+  <p>
+    <strong>Previous Events Attended:</strong><br/>
+    <% @prev_events.each do |event| %>
+      <li>
+        <%= link_to event.description, event_path(event) %>
+      </li>
+    <% end %>
+  </p>
+</div>

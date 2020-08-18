@@ -1,58 +1,61 @@
-<h1>Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+<div>
+  <h5>Events</h5>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to event.description, event %></td>
+        <th>Description</th>
+        <th>Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<h1>Upcoming Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @upcoming_events.each do |event| %>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.description %></td>
+          <td><%= event.date %></td>
+          <td><%= link_to 'Show', event %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <h6>Upcoming Events</h6>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to event.description, event %></td>
+        <th>Description</th>
+        <th>Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<h1>Previous Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @previous_events.each do |event| %>
+    </thead>
+    <tbody>
+      <% @upcoming_events.each do |event| %>
+        <tr>
+          <td><%= event.description %></td>
+          <td><%= event.date %></td>
+          <td><%= link_to 'Show', event %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <h6>Past Events</h6>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to event.description, event %></td>
+        <th>Description</th>
+        <th>Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'New Event', new_event_path %>
+    </thead>
+    <tbody>
+      <% @previous_events.each do |event| %>
+        <tr>
+          <td><%= event.description %></td>
+          <td><%= event.date %></td>
+          <td><%= link_to 'Show', event %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
