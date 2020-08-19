@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-    has_many :events_created, foreign_key: :creator_id, class_name: "Event"
-    has_many :event_attendances, foreign_key: :event_attendee_id
-    has_many :attended_events, through: :event_attendances
+    has_many :events_created, foreign_key: :creator_id, class_name: "Event", dependent: :destroy 
+    has_many :event_attendances, foreign_key: :event_attendee_id, dependent: :destroy 
+    has_many :attended_events, through: :event_attendances, dependent: :destroy 
     validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
 
     def upcoming_events
