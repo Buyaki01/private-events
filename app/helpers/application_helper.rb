@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def logged_in_user
     'Logged_in user: '
-    end
+  end
 
   def current_user_name
     @current_user.name
