@@ -1,20 +1,17 @@
 class SessionsController < ApplicationController
-
-  def new
-
-  end
+  def new; end
 
   def create
     @user = User.find_by(name: params[:name])
     session[:current_user_id] = @user.id if @user
 
     respond_to do |format|
-      if @user 
-        format.html { redirect_to user_path(@user), notice: 'You have successfully logged in'}
+      if @user
+        format.html { redirect_to user_path(@user), notice: 'You have successfully logged in' }
         format.json { render @user, status: :'logged in' }
       else
         format.html { render :new }
-        format.json { render json: {error: "failed login"}, status: :unprocessable_entity }
+        format.json { render json: { error: 'failed login' }, status: :unprocessable_entity }
       end
     end
   end
@@ -30,9 +27,9 @@ class SessionsController < ApplicationController
   end
 
   private
-  
-    # Only allow a list of trusted parameters through.
-    def session_params
-      params.fetch(:session, {})
-    end
+
+  # Only allow a list of trusted parameters through.
+  def session_params
+    params.fetch(:session, {})
+  end
 end

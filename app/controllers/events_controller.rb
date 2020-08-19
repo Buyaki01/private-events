@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_user, only: [:show, :index, :new, :attended_event, :add_attended_event]
+  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_current_user, only: %i[show index new attended_event add_attended_event]
 
   # GET /events
   # GET /events.json
@@ -22,8 +22,7 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /events
   # POST /events.json
@@ -70,7 +69,6 @@ class EventsController < ApplicationController
   end
 
   def add_attended_event
-
     event_ids = params[:event_ids]
     attended_events = event_ids.collect { |id| Event.find(id) }
     @current_user.attended_events = attended_events
@@ -84,26 +82,26 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def set_current_user
-      redirect_to sign_in_path unless current_user
-      @current_user = current_user
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.fetch(:event, {}).permit(:date, :description) 
-    end
+  def set_current_user
+    redirect_to sign_in_path unless current_user
+    @current_user = current_user
+  end
 
-    def creator
-      @creator = User.find_by(id: @event.creator_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def event_params
+    params.fetch(:event, {}).permit(:date, :description)
+  end
+
+  def creator
+    @creator = User.find_by(id: @event.creator_id)
+  end
 end
