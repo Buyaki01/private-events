@@ -43,7 +43,7 @@ Make sure the server is running
 - Linkedin: [Marylene Sawyer](https://www.linkedin.com/in/marylene-sawyer)
 
 # Acknowledgements
-- [The Devise Gem](https://github.com/heartcombo/devise)
+-                [Rails Guides](https://guides.rubyonrails.org)
 
 ## 🤝 Contributing
 
