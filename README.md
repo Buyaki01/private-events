@@ -1,6 +1,6 @@
 # private-events
 
-![CI Status Badge](https://github.com/Bluette1/private_events/workflows/CI%20Checks/badge.svg)
+![CI Status Badge](https://github.com/Buyaki01/private-events/workflows/CI%20Checks/badge.svg)
 
 This is a project in the Ruby on Rails curriculum at [Microverse](https:www.microverse.org/) - @microverseinc
 
