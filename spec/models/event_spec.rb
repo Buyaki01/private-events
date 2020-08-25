@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+#  describe 'validation' do
+#    it { should ensure_length_of(:description).is_at_least(3) }
+#    it { should validate_presence_of(:description) }
+#    it { should validate_uniqueness_of(:description) }
+
+ #   it { should validate_presence_of(:date) }
+#  end
+
+  describe 'Associations' do
+    it { should belong_to(:creator) }
+    it { should have_many(:attendees) }
+    it { should have_many(:event_attendances) }
+  end 
 end
