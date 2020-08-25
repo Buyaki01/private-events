@@ -1,5 +1,7 @@
 # private-events
 
+![CI Status Badge](https://github.com/Bluette1/private_events/workflows/CI%20Checks/badge.svg)
+
 This is a project in the Ruby on Rails curriculum at [Microverse](https:www.microverse.org/) - @microverseinc
 
 The project specifications can be found on [Ruby on Rails
