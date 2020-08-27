@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-
   describe 'Validations' do
     let(:creator) do
       User.create(name: 'creator')
