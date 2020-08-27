@@ -6,7 +6,7 @@ RSpec.describe Event, type: :model do
   #    it { should validate_presence_of(:description) }
   #    it { should validate_uniqueness_of(:description) }
 
-  #   it { should validate_presence_of(:date) }
+  #   it { sho uld validate_presence_of(:date) }
   #  end
 
   describe 'Associations' do
