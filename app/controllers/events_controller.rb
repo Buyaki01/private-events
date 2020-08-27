@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
-  before_action :set_current_user, only: %i[show index new attended_event add_attended_event]
+  before_action :set_current_user, only: %i[show index new attend_events show_events]
 
   # GET /events
   # GET /events.json
@@ -64,11 +64,11 @@ class EventsController < ApplicationController
     end
   end
 
-  def attended_event
+  def show_events
     @events = Event.all
   end
 
-  def add_attended_event
+  def attend_events
     event_ids = params[:event_ids]
     attended_events = event_ids.collect { |id| Event.find(id) }
     @current_user.attended_events = attended_events
