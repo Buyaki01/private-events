@@ -70,6 +70,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   rescue StandardError
     flash[:notice] = "User with id #{params[:id]} does not exist"
+    redirect_to root_path if current_user
+    redirect_to sign_in_path
   end
 
   def set_current_user
