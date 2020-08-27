@@ -27,6 +27,13 @@ RSpec.describe 'Authentication Requests', type: :request do
       expect(response).to have_http_status(:found)
       expect(response).to have_http_status(302)
     end
+
+    it 'should not access the show user page if not signed in' do
+      get '/users/1'
+      expect(response).to redirect_to(sign_in_path)
+      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(302)
+    end
   end
 
   describe 'when user is logged in' do

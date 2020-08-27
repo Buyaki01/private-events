@@ -68,6 +68,8 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  rescue StandardError
+    flash[:notice] = "User with id #{params[:id]} does not exist"
   end
 
   def set_current_user
