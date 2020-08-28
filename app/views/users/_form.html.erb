@@ -13,10 +13,10 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :id => :username, class: 'mb-1 form-control' %>
   </div>
 
   <div class="actions">
-    <input type="submit" name="commit" value="Sign Up ">
+    <input type="submit" name="commit" value="Submit">
   </div>
 <% end %>
