@@ -8,11 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body container-lg container-fluid>
-  
+  <div class="mb-5 h-100">
     <% if flash[:notice] %>
       <p id="notice" class="text-center"><%= notice %></p>
     <% end %>
-    <header class="row page-header d-flex navbar justify-content-center fixed-top">
+  </div>
+    <header class="pt-5 row page-header d-flex navbar justify-content-center fixed-top">
     <% if current_user %>
       <p class="display text-center">
         <%= logged_in_user %>
@@ -24,7 +25,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <%= link_to "Events", events_path, class: "btn"  %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to "Attend Events", attend_events_path, class: "btn"  %>
+        <%= link_to "Attend Event(s)", attend_events_path, class: "btn"  %>
       </p>
     <% else %>
       <p>

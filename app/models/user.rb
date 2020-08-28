@@ -15,4 +15,10 @@ class User < ApplicationRecord
       event.date < Date.today
     end
   end
+
+  def find
+    super
+  rescue StandardError
+    logger.error('Non-existent User')
+  end
 end

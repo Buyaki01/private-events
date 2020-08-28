@@ -7,7 +7,10 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @user
-        format.html { redirect_to user_path(@user), notice: 'You have successfully logged in' }
+
+        path_url = session[:previous_url] || user_path(@user)
+
+        format.html { redirect_to path_url, notice: 'You have successfully logged in' }
         format.json { render @user, status: :'logged in' }
       else
         format.html { render :new }
@@ -22,6 +25,7 @@ class SessionsController < ApplicationController
     session[:current_user_id] = nil
     respond_to do |format|
       format.html { redirect_to sign_in_url, notice: 'You have successfully logged out.' }
+
       format.json { head :no_content }
     end
   end

@@ -12,7 +12,7 @@
     <% end %>
   </p>
   <p>
-    <strong>Events Attended:</strong><br/>
+    <strong>Events Registered for:</strong><br/>
     <% attended_events.each do |event| %>
       <li>
         <%= link_to event_description(event), event_path(event) %>
@@ -20,7 +20,7 @@
     <% end %>
   </p>
   <p>
-    <strong>Upcoming Events Attended:</strong><br/>
+    <strong>Upcoming Events you have Registered for:</strong><br/>
     <% upcoming_events.each do |event| %>
       <li>
         <%= link_to event_description(event), event_path(event) %>
@@ -28,7 +28,7 @@
     <% end %>
   </p>
   <p>
-    <strong>Previous Events Attended:</strong><br/>
+    <strong>Previous Events you have Registered for:</strong><br/>
     <% prev_events.each do |event| %>
       <li>
         <%= link_to event_description(event), event_path(event) %>

@@ -67,15 +67,25 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
-  rescue StandardError
-    flash[:notice] = "User with id #{params[:id]} does not exist"
-    redirect_to root_path if current_user
-    redirect_to sign_in_path
+    if current_user
+
+      begin
+        @user = User.find(params[:id])
+      rescue StandardError => e
+        flash[:notice] = e.to_s
+        redirect_to root_path
+      end
+    else
+      session[:previous_url] = request.fullpath unless request.fullpath =~ Regexp.new('/user/')
+      redirect_to sign_in_path
+    end
   end
 
   def set_current_user
-    redirect_to sign_in_path unless current_user
+    if current_user.nil?
+      session[:previous_url] = request.fullpath unless request.fullpath =~ Regexp.new('/user/')
+      redirect_to sign_in_path
+    end
     @current_user = current_user
   end
 

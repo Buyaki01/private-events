@@ -1,17 +1,19 @@
 <div>
-<h5>Add Attended Event</h5><br/>
+<h5>Attend Event(s)</h5><br/>
 <%= form_with(model: event, local: true) do |form| %>
 
  <% events.each do |event| %> 
-  <%= check_box_tag "event_ids[]", event.id, false %> 
+  <%= check_box_tag "event_ids[]", event.id, false, id: event.description %> 
   <%= event.description %> <%= event.date %><br/>
 <% end %>
 <br/>
-
+<br/>
   <div class="actions">
     <%= form.submit %>
   </div>
 
 <% end %>
+<br/>
+<%= link_to 'Cancel', events_path %>
 
 </div>
