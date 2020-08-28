@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   end
 
   def show_events
-    @events = Event.all
+    @events = Event.all.reject { |event| @current_user.attended_events.include?(event) }
   end
 
   def attend_events
@@ -75,7 +75,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @current_user.save
-        format.html { redirect_to user_path(@current_user), notice: 'Attended events were successfully added.' }
+        format.html do
+          redirect_to user_path(@current_user), notice: 'You have successfully registered for the chosen event(s)'
+        end
         format.json { render user_path, status: 'events added', location: @current_user }
       else
         format.html { render attended_events_path }
