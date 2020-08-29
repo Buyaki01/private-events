@@ -43,6 +43,10 @@ module EventsHelper
     event.date
   end
 
+  def no_events
+    events.empty?
+  end
+
   def set_notice
     flash[:notice] = 'You have already registered for all the available events.'
   end

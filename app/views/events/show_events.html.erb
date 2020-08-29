@@ -1,7 +1,7 @@
 <div>
   <h5 class='title'>Attend Event(s)</h5>
   <br/>
-  <% if events.empty?%>
+  <% if no_events %>
     <%= render 'empty_events_check'%>
   <% else %>
     <%= form_with(model: event, local: true) do |form| %>
