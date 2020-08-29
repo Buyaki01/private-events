@@ -1,16 +1,20 @@
 <div>
   <h5 class='title'>Attend Event(s)</h5>
   <br/>
-  <%= form_with(model: event, local: true) do |form| %>
-    <% events.each do |event| %>
-      <%= check_box_tag "event_ids[]", event.id, false, id: event.description %>
-      <%= event.description %> <%= event.date %><br/>
+  <% if events.empty?%>
+    <%= render 'empty_events_check'%>
+  <% else %>
+    <%= form_with(model: event, local: true) do |form| %>
+      <% events.each do |event| %>
+        <%= check_box_tag "event_ids[]", event.id, false, id: event.description %>
+        <%= event.description %> <%= event.date %><br/>
+      <% end %>
+      <br/>
+      <br/>
+      <button class="actions btn">
+        <%= form.submit %>
+      </button>
     <% end %>
-    <br/>
-    <br/>
-    <button class="actions btn">
-      <%= form.submit %>
-    </button>
   <% end %>
   <br/>
   <%= link_to 'Cancel', events_path %>

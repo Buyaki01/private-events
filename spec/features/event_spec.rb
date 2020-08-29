@@ -12,12 +12,7 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'a new event is created successfully' do
-    visit '/sign_up'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Register'
-    visit '/sign_in'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Log In'
+    sign_in
 
     click_on 'New Event'
     fill_in 'event_description', with: 'Cats Event'
@@ -27,12 +22,7 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'invalid inputs for creating an event - duplicate descriptions' do
-    visit '/sign_up'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Register'
-    visit '/sign_in'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Log In'
+    sign_in
 
     click_on 'New Event'
     fill_in 'event_description', with: 'Cats Event'
@@ -47,12 +37,7 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'invalid inputs for creating an event - date omitted' do
-    visit '/sign_up'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Register'
-    visit '/sign_in'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Log In'
+    sign_in
 
     click_on 'New Event'
     fill_in 'event_description', with: 'Cats Event'
@@ -62,12 +47,7 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'invalid inputs for creating an event - description omitted' do
-    visit '/sign_up'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Register'
-    visit '/sign_in'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Log In'
+    sign_in
 
     click_on 'New Event'
     fill_in 'event_date', with: Date.today
@@ -77,12 +57,7 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'invalid inputs for creating an event - description too short' do
-    visit '/sign_up'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Register'
-    visit '/sign_in'
-    fill_in 'username', with: 'Marylene'
-    click_on 'Log In'
+    sign_in
 
     click_on 'New Event'
     fill_in 'event_description', with: 'Ca'
@@ -92,7 +67,8 @@ RSpec.describe 'Event Management Features', type: :feature do
   end
 
   scenario 'a registered user attends existing events' do
-    attend_events
+    sign_in
+    create_events
 
     click_on 'Attend Event(s)'
     page.check 'Dogs Event'
@@ -109,17 +85,31 @@ RSpec.describe 'Event Management Features', type: :feature do
     expect(page).to_not have_content('Dogs Event')
     expect(page).to_not have_content('Cats Event')
   end
+
+  scenario 'a registered user cannot attend events if there are no more events to attend' do
+    sign_in
+    click_on 'Attend Event(s)'
+
+    expect(page).not_to have_content('Save')
+    expect(page).to have_content('You have already registered for all the available events.')
+    expect(page).to have_content(
+      'There are no more events to attend. Create an event to attend or wait for one to be created.'
+    )
+  end
 end
 
 private
-def attend_events
+
+def sign_in
   visit '/sign_up'
   fill_in 'username', with: 'Marylene'
   click_on 'Register'
   visit '/sign_in'
   fill_in 'username', with: 'Marylene'
   click_on 'Log In'
+end
 
+def create_events
   click_on 'New Event'
   fill_in 'event_description', with: 'Cats Event'
   fill_in 'event_date', with: Time.zone.now + 10.days

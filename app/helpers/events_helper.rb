@@ -42,4 +42,8 @@ module EventsHelper
   def event_date(event)
     event.date
   end
+
+  def set_notice
+    flash[:notice] = 'You have already registered for all the available events.'
+  end
 end

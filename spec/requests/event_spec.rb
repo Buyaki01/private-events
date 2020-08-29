@@ -89,7 +89,13 @@ RSpec.describe 'Event Requests', type: :request do
       expect(response.body).not_to include('description one')
       expect(response.body).to include('description two')
       expect(response.body).not_to include('description three')
-      expect(response.body).not_to include(event_four[:description])
+      (event_four[:description])
+    end
+
+    it 'a registered user cannot attend events if there are no more events to attend' do
+      get '/attend_events'
+      expect(flash[:notice]).to eq 'You have already registered for all the available events.'
+      expect(response.body).not_to include('Save')
     end
 
     it '/events/{id} path is working correctly' do
