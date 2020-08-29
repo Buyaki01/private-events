@@ -19,7 +19,7 @@ PROJECT: ASSOCIATIONS](https://www.theodinproject.com/courses/ruby-on-rails/less
 
 ## Live Demo
 
-[Live Demo]()
+[Live Demo](https://pre-eventrite.herokuapp.com/)
 
 ### Run instructions 
 -  You can clone the GitHub repo and type the following commands in the terminal to run the bot locally 
