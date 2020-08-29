@@ -6,7 +6,7 @@ RSpec.describe Event, type: :model do
       User.create(name: 'creator')
     end
     subject do
-      described_class.new(description: 'description', date: Date.today, creator_id: creator.id)
+      described_class.new(description: 'description', date: Time.zone.now + 10.days, creator_id: creator.id)
     end
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

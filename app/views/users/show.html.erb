@@ -5,34 +5,14 @@
   </p>
   <p>
     <strong>Events Created:</strong>
-    <% events_created.each do |event| %>
-      <li>
-        <%= link_to event_description(event), event_path(event) %>
-      </li>
-    <% end %>
+  <%= render 'created' %>
   </p>
   <p>
-    <strong>Events Registered for:</strong><br/>
-    <% attended_events.each do |event| %>
-      <li>
-        <%= link_to event_description(event), event_path(event) %>
-      </li>
-    <% end %>
-  </p>
-  <p>
-    <strong>Upcoming Events you have Registered for:</strong><br/>
-    <% upcoming_events.each do |event| %>
-      <li>
-        <%= link_to event_description(event), event_path(event) %>
-      </li>
-    <% end %>
+   <strong>Upcoming Events you have Registered for:</strong><br/>
+   <%= render 'upcoming' %>
   </p>
   <p>
     <strong>Previous Events you have Registered for:</strong><br/>
-    <% prev_events.each do |event| %>
-      <li>
-        <%= link_to event_description(event), event_path(event) %>
-      </li>
-    <% end %>
+   <%= render 'previous' %>
   </p>
 </div>

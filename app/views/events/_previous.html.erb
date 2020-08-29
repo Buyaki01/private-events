@@ -1,0 +1,7 @@
+ <% previous_events.each do |event| %>
+  <tr>
+    <td><%= event_description(event) %></td>
+    <td><%= event_date(event) %></td>
+    <td><%= link_to 'Show', event %></td>
+  </tr>
+<% end %>

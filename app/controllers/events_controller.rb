@@ -3,15 +3,13 @@ class EventsController < ApplicationController
   before_action :set_current_user, only: %i[show index new attend_events show_events]
 
   # GET /events
-  # GET /events.json
   def index
     @events = Event.all
-    @upcoming_events = Event.upcoming_events
-    @previous_events = Event.previous_events
+    @upcoming_events = Event.upcoming
+    @previous_events = Event.previous
   end
 
   # GET /events/1
-  # GET /events/1.json
   def show
     @creator = creator
   end
@@ -25,64 +23,30 @@ class EventsController < ApplicationController
   def edit; end
 
   # POST /events
-  # POST /events.json
+
   def create
     @event = current_user.events_created.build(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /events/1
-  # DELETE /events/1.json
-  def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+    if @event.save
+      redirect_to @event, notice: 'Event was successfully created.'
+    else
+      flash[:errors] = @event.errors.full_messages
+      render :new
     end
   end
 
   def show_events
-    @events = Event.all.reject { |event| @current_user.attended_events.include?(event) }
+    @events = Event.all.reject { |event| @current_user.attended_events.include?(event) || event.date < Time.zone.now }
   end
 
   def attend_events
     event_ids = params[:event_ids]
     attended_events = event_ids.collect { |id| Event.find(id) }
-    @current_user.attended_events = attended_events
+    @current_user.attended_events << attended_events
 
-    respond_to do |format|
-      if @current_user.save
-        format.html do
-          redirect_to user_path(@current_user), notice: 'You have successfully registered for the chosen event(s)'
-        end
-        format.json { render user_path, status: 'events added', location: @current_user }
-      else
-        format.html { render attended_events_path }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @current_user.save
+      redirect_to user_path(@current_user), notice: 'You have successfully registered for the chosen event(s)'
+    else
+      render attended_events_path
     end
   end
 

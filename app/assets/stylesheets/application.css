@@ -58,7 +58,7 @@ a:hover {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo-left.logo {
+.logo-center.logo {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 37px;
@@ -67,39 +67,39 @@ a:hover {
 }
 
 .page-header.right-section ul li a,
-.page-header .logo-left .logo {
+.page-header .logo-center .logo {
   cursor: pointer;
   color: rgb(25, 7, 66);
 }
 
 .title {
   color: rgb(25, 7, 66);
-  font-style: normal;
-}
-
-.btn.title {
-  color: rgb(25, 7, 66);
-  font-style: normal;
-  background-color: rgb(141, 141, 175);
 }
 
 .btn {
-  font-size: 22px;
-}
-
-.btn.title:hover,
-.btn:hover {
   text-decoration: none;
-  color: #fff;
+  font-size: 22px;
   background-color: rgb(145, 145, 170);
 }
 
-.post {
-  font-style: italic;
+button input,
+input.btn {
+  font-size: 16px;
+  font-weight: 400;
+  background-color: rgb(141, 141, 175);
+}
+
+.title,
+button input:hover,
+input.btn:hover {
   font-weight: bold;
 }
 
-.page-header .logo-left .logo,
+#alert {
+  color: #f00;
+}
+
+.page-header .logo-center .logo,
 .page-header .right-section {
   font-family: Arial, Helvetica, sans-serif;
 }

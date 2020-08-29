@@ -45,7 +45,7 @@ Make sure the server is running
 - Linkedin: [Marylene Sawyer](https://www.linkedin.com/in/marylene-sawyer)
 
 # Acknowledgements
--                [Rails Guides](https://guides.rubyonrails.org)
+- [Rails Guides](https://guides.rubyonrails.org)
 
 ## 🤝 Contributing
 
