@@ -17,6 +17,24 @@ RSpec.describe Event, type: :model do
       subject.description = 'de'
       expect(subject).to_not be_valid
     end
+
+    it 'is not valid without a date' do
+      subject.date = nil
+      expect(subject).to_not be_valid
+
+      subject.date = ''
+      expect(subject).to_not be_valid
+    end
+
+    it 'an invalid date string should not be accepted' do
+      subject.date = '200000'
+      expect(subject).to_not be_valid
+    end
+
+    it 'the date should be in the present or future' do
+      subject.date = Time.zone.now - 10.days
+      expect(subject).to_not be_valid
+    end
   end
 
   describe 'Associations' do
