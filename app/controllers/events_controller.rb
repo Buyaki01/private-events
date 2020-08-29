@@ -35,7 +35,7 @@ class EventsController < ApplicationController
   end
 
   def show_events
-    @events = Event.all.reject { |event| @current_user.attended_events.include?(event) || event.date < Time.zone.now }
+    @events = Event.all.reject { |event| @current_user.attended_events.include?(event) || event.date < Time.zone.today }
   end
 
   def attend_events
