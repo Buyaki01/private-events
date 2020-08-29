@@ -40,13 +40,18 @@ class EventsController < ApplicationController
 
   def attend_events
     event_ids = params[:event_ids]
-    attended_events = event_ids.collect { |id| Event.find(id) }
-    @current_user.attended_events << attended_events
-
-    if @current_user.save
-      redirect_to user_path(@current_user), notice: 'You have successfully registered for the chosen event(s)'
+    if event_ids.nil?
+      flash[:alert] = 'The user did not select any events to attend'
+      redirect_to attend_events_path
     else
-      render attended_events_path
+      attended_events = event_ids.collect { |id| Event.find(id) }
+      @current_user.attended_events << attended_events
+
+      if @current_user.save
+        redirect_to user_path(@current_user), notice: 'You have successfully registered for the chosen event(s)'
+      else
+        redirect_to attend_events_path
+      end
     end
   end
 
