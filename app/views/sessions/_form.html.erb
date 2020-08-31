@@ -1,0 +1,7 @@
+<%= form_with(local: true) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, :id => :username, class: 'mb-1 form-control' %>
+  <br/>
+  <br/>
+    <input type="submit" class='btn' name="commit" value="Log In">
+<% end %>

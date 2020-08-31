@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity: "sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh", crossorigin: "anonymous" %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body container-lg container-fluid>
+    <div class="mb-5 h-100">
+      <% if flash[:notice] %>
+        <p id="notice" class="text-center"><%= notice %></p>
+      <% elsif flash[:alert] %>
+        <p id="alert" class="text-center"><%= alert %></p>
+      <% end %>
+    </div>
+    <header class="pt-5 row page-header d-flex navbar justify-content-center fixed-top">
+      <% if current_user %>
+        <p class="display text-center">
+          <%= logged_in_user %>
+          <%= link_to current_user_name, user_path(current_user_id), class: "btn" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Sign Out", sign_out_path, method: :delete, class: "btn" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "New Event", new_event_path, class: "btn"  %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Events", events_path, class: "btn"  %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Attend Event(s)", attend_events_path, class: "btn"  %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to "Sign In", sign_in_path, class: "btn" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Sign Up", sign_up_path, class: "btn"  %>
+        </p>
+        <br/>
+      <% end %>
+    </header>
+    <div class="d-flex justify-content-center logo-center logo pl-4"><%= link_to 'EventsRite', root_path %></div>
+    <hr>
+    <br/>
+    <br/>
+    <br/>
+    <main class="d-flex align-items-center justify-content-center ">
+      <%= yield %>
+    </main>
+  </body>
+</html>
