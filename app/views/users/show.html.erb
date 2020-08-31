@@ -1,0 +1,18 @@
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= name(user) %>
+  </p>
+  <p>
+    <strong>Events Created:</strong>
+  <%= render 'created' %>
+  </p>
+  <p>
+   <strong>Upcoming Events you have Registered for:</strong><br/>
+   <%= render 'upcoming' %>
+  </p>
+  <p>
+    <strong>Previous Events you have Registered for:</strong><br/>
+   <%= render 'previous' %>
+  </p>
+</div>

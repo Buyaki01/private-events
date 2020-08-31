@@ -1,0 +1,5 @@
+ <% prev_events.each do |event| %>
+  <li>
+    <%= link_to event_description(event), event_path(event) %>
+  </li>
+<% end %>
