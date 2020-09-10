@@ -39,6 +39,12 @@ Make sure the server is running
 
 ## Authors
 
+
+👤 **Ritta Buyaki**
+- Github: [@Buyaki01](https://github.com/Buyaki01)
+- Twitter: [ @BuyakiRitta](https://twitter.com/BuyakiRitta)
+- Linkedin: [Ritta Buyaki](https://www.linkedin.com/in/ritta-buyaki-b12904128/)
+
 👤 **Marylene Sawyer**
 - Github: [@Bluette1](https://github.com/Bluette1)
 - Twitter: [@MaryleneSawyer](https://twitter.com/MaryleneSawyer)
